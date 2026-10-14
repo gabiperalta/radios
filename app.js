@@ -139,6 +139,9 @@ function selectRadio(id) {
   nowName.textContent = radio.name;
   updateSelected();
 
+  // Volver arriba para ver el reproductor sin desplazarse
+  try { window.scrollTo(0, 0); } catch (e) {}
+
   // Radios que solo se pueden escuchar desde el sitio del proveedor (iframe)
   if (radio.iframe) {
     try { audio.pause(); } catch (e) {}
