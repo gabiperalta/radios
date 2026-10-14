@@ -3,14 +3,15 @@
 //   id:          identificador único (sin espacios)
 //   name:        nombre que se muestra
 //   description: texto pequeño opcional (frecuencia, ciudad, etc.)
-//   url:         dirección del stream
-//
-// Todas las radios usan HTTPS para que funcionen publicadas en GitHub Pages (github.io).
+//   url:         dirección del stream (stream directo HTTPS)
+//   iframe:      (opcional) reproductor externo, para radios con tokens
 
 window.RADIOS = [
   { id: 'nacional', name: 'Radio Nacional del Paraguay 920 AM', description: 'Nacional', url: 'https://audio.radionacional.gov.py/920' },
   { id: 'guaira', name: 'Radio Guaira AM 840', description: 'Villarrica, Paraguay', url: 'https://server5.hostipy.com:8016/stream' },
   { id: 'viejitas', name: 'Viejitas pero bonitas', description: 'Clásicos', url: 'https://stream.zeno.fm/6ttynxp35k0uv' },
+  { id: 'radioamor', name: 'Radio Amor 95.9 FM', description: 'Paraguay (reproductor externo)', iframe: 'https://www.desdeparaguay.com/amor' },
+  { id: 'primeromarzo', name: 'Primero de Marzo 780 AM', description: 'Noticias (reproductor externo)', iframe: 'https://megacadena.com.py/player/' },
   { id: 'rockandpop', name: 'Rock & Pop Paraguay', description: 'Rock y Pop', url: 'https://cp9.serverse.com/proxy/rockandpop/stream' },
   { id: 'radioimpacto', name: 'Radio Impacto 95.3', description: 'Variedad', url: 'https://radio.host.com.py:7137/;' },
   { id: 'palma', name: 'Radio Palma 106.5 FM', description: 'Paraguay', url: 'https://us-b4-p-e-qg12-audio.cdn.mdstrm.com/live-audio-aw/62d81d48f5ef320830c8becf' },
