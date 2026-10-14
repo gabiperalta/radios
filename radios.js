@@ -9,8 +9,7 @@
 
 window.RADIOS = [
   { id: 'nacional', name: 'Radio Nacional del Paraguay 920 AM', description: 'Nacional', url: 'https://audio.radionacional.gov.py/920' },
-  { id: 'radioamor', name: 'Radio Amor 95.9 FM', description: 'Paraguay', url: 'https://copaco.desdeparaguay.net/movamor/movamor.stream/playlist.m3u8' },
-  { id: 'guaira', name: 'Radio Guaira FM 103.5', description: 'Villarrica, Paraguay', url: 'https://cdn.streaming.com.py:7090/stream' },
+  { id: 'guaira', name: 'Radio Guaira AM 840', description: 'Villarrica, Paraguay', url: 'https://server5.hostipy.com:8016/stream' },
   { id: 'viejitas', name: 'Viejitas pero bonitas', description: 'Clásicos', url: 'https://stream.zeno.fm/6ttynxp35k0uv' },
   { id: 'rockandpop', name: 'Rock & Pop Paraguay', description: 'Rock y Pop', url: 'https://cp9.serverse.com/proxy/rockandpop/stream' },
   { id: 'radioimpacto', name: 'Radio Impacto 95.3', description: 'Variedad', url: 'https://radio.host.com.py:7137/;' },
