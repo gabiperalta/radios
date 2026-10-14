@@ -3,6 +3,9 @@
 'use strict';
 
 var audio = document.getElementById('audio');
+var audioControls = document.getElementById('audio-controls');
+var iframeBox = document.getElementById('iframe-box');
+var iframePlayer = document.getElementById('iframe-player');
 var playBtn = document.getElementById('play-btn');
 var prevBtn = document.getElementById('prev-btn');
 var nextBtn = document.getElementById('next-btn');
@@ -132,8 +135,29 @@ function selectRadio(id) {
   if (!radio) return;
   currentId = id;
   try { localStorage.setItem('lastRadio', id); } catch (e) {}
+
   nowName.textContent = radio.name;
   updateSelected();
+
+  // Radios que solo se pueden escuchar desde el sitio del proveedor (iframe)
+  if (radio.iframe) {
+    try { audio.pause(); } catch (e) {}
+    try { audio.removeAttribute('src'); audio.load(); } catch (e) {}
+    isPlaying = false;
+    updatePlayButton();
+
+    iframePlayer.src = radio.iframe;
+    iframeBox.style.display = 'block';
+    if (audioControls) audioControls.style.display = 'none';
+    setStatus('Se reproduce en el sitio externo. Tocá play ahí.');
+    return;
+  }
+
+  // Radio normal por audio directo
+  if (iframeBox) iframeBox.style.display = 'none';
+  if (iframePlayer) iframePlayer.src = '';
+  if (audioControls) audioControls.style.display = 'block';
+
   playRadio(radio);
 }
 
@@ -171,26 +195,30 @@ function nextRadio() {
 }
 
 // Audio events
+function currentIsExternal() {
+  var r = currentId ? findRadio(currentId) : null;
+  return !!(r && r.iframe);
+}
+
 audio.addEventListener('playing', function () {
-  if (isStopping) return;
+  if (isStopping || currentIsExternal()) return;
   isPlaying = true;
   setStatus('Reproduciendo');
   updatePlayButton();
 });
 audio.addEventListener('pause', function () {
-  // ignore while stopping
-  if (isStopping) return;
+  if (isStopping || currentIsExternal()) return;
 });
 audio.addEventListener('waiting', function () {
-  if (isStopping) return;
+  if (isStopping || currentIsExternal()) return;
   setStatus('Cargando...');
 });
 audio.addEventListener('stalled', function () {
-  if (isStopping) return;
+  if (isStopping || currentIsExternal()) return;
   setStatus('Conexión lenta...');
 });
 audio.addEventListener('error', function () {
-  if (isStopping) return;
+  if (isStopping || currentIsExternal()) return;
   isPlaying = false;
   setStatus('Error de conexión. Probá de nuevo.');
   updatePlayButton();
@@ -209,9 +237,19 @@ try { lastId = localStorage.getItem('lastRadio'); } catch (e) { lastId = null; }
 
 if (lastId && findRadio(lastId)) {
   currentId = lastId;
-  nowName.textContent = findRadio(lastId).name;
+  var restored = findRadio(lastId);
+  nowName.textContent = restored.name;
   updateSelected();
-  setStatus('Tocá Reproducir para comenzar');
+  if (restored.iframe) {
+    iframePlayer.src = restored.iframe;
+    iframeBox.style.display = 'block';
+    if (audioControls) audioControls.style.display = 'none';
+    setStatus('Se reproduce en el sitio externo. Tocá play ahí.');
+  } else {
+    if (iframeBox) iframeBox.style.display = 'none';
+    if (audioControls) audioControls.style.display = 'block';
+    setStatus('Tocá Reproducir para comenzar');
+  }
 } else if (radios.length > 0) {
   nowName.textContent = 'Elegí una radio de la lista';
   setStatus('Tocá una radio para comenzar');
