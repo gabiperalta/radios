@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Radio</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Radio en vivo</h1>
+
+  <div class="card now-card">
+    <p class="now-title">Ahora suena</p>
+    <p id="now-name">Elegí una radio de la lista</p>
+    <p id="status">Tocá una radio para comenzar</p>
+
+    <div class="controls">
+      <button id="play-btn" class="primary" type="button">▶  Reproducir</button>
+    </div>
+    <div class="controls secondary">
+      <button id="prev-btn" type="button">◀  Anterior</button>
+      <button id="next-btn" type="button">Siguiente  ▶▶</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="now-title">Elegí una radio</p>
+    <ul id="radio-list"></ul>
+  </div>
+
+  <p class="note">
+    Consejo: el volumen se controla con los botones físicos del teléfono.
+  </p>
+
+  <audio id="audio" preload="none" x-webkit-airplay="allow"></audio>
+
+  <script src="radios.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
