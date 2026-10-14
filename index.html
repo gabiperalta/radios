@@ -14,12 +14,19 @@
     <p id="now-name">Elegí una radio de la lista</p>
     <p id="status">Tocá una radio para comenzar</p>
 
-    <div class="controls">
-      <button id="play-btn" class="primary" type="button">▶  Reproducir</button>
+    <div id="audio-controls">
+      <div class="controls">
+        <button id="play-btn" class="primary" type="button">▶  Reproducir</button>
+      </div>
+      <div class="controls secondary">
+        <button id="prev-btn" type="button">◀  Anterior</button>
+        <button id="next-btn" type="button">Siguiente  ▶▶</button>
+      </div>
     </div>
-    <div class="controls secondary">
-      <button id="prev-btn" type="button">◀  Anterior</button>
-      <button id="next-btn" type="button">Siguiente  ▶▶</button>
+
+    <div id="iframe-box" class="iframe-box" style="display:none;">
+      <iframe id="iframe-player" title="Reproductor externo" src="" allow="autoplay" loading="lazy"></iframe>
+      <p class="note">Esta radio se reproduce en el sitio del proveedor.</p>
     </div>
   </div>
 

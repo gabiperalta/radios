@@ -166,3 +166,15 @@ button:active {
 audio {
   display: none;
 }
+
+.iframe-box {
+  text-align: center;
+}
+
+.iframe-box iframe {
+  width: 100%;
+  height: 230px;
+  border: 2px solid #c7c7cc;
+  border-radius: 12px;
+  background: #fff;
+}
