@@ -18,5 +18,6 @@ window.RADIOS = [
   { id: 'superadio', name: 'Super Radio', description: 'Paraguay', url: 'https://c32.radioboss.fm:8139/stream' },
   { id: 'tapiracuai', name: 'Radio Tapiracuai 88.7', description: 'Paraguay (HLS)', url: 'https://tigocloud.desdeparaguay.net/movtapiracuai/movtapiracuai.stream/playlist.m3u8' },
   { id: 'abccardinal', name: 'Radio ABC Cardinal 730 AM', description: 'Noticias', url: 'https://media.streambrothers.com:8342/stream' },
-  { id: 'abcfm', name: 'Radio ABC FM 98.5', description: 'Paraguay', url: 'https://media.streambrothers.com:8350/stream' }
+  { id: 'abcfm', name: 'Radio ABC FM 98.5', description: 'Paraguay', url: 'https://media.streambrothers.com:8350/stream' },
+  { id: 'nacional', name: 'Radio Nacional del Paraguay 920 AM', description: 'Nacional', url: 'https://audio.radionacional.gov.py/920' }
 ];
